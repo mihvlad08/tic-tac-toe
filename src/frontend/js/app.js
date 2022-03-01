@@ -4,7 +4,10 @@ let player2 = document.querySelector('#player_2');
 
 document.querySelector(".button-trigger").addEventListener("click", function(){
     if(player1.value.length == 0 || player2.value.length == 0) {
-        alert("Please enter some valid information!");
+        alert("Please enter some valid player names!");
     } 
  });
 
+// let td = document.getElementsByTagName('table');
+// let player1color = "blue";
+// let player2color = "green"

@@ -54,4 +54,46 @@ body {
 .player-info #button:hover {
   cursor: pointer;
 }
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 30px;
+}
+
+.main #button-game {
+  margin-top: 10px;
+  padding: 20px;
+  padding-left: 75px;
+  padding-right: 75px;
+}
+
+.main table {
+  border-radius: 10px;
+  background: white;
+}
+
+.main table tbody {
+  background: white;
+}
+
+.main table tbody tr td {
+  background: white;
+  padding: 90px;
+}
+
+.main table tbody tr td:hover {
+  cursor: pointer;
+}
 /*# sourceMappingURL=style.css.map */

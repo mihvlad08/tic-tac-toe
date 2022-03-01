@@ -18,10 +18,9 @@
             $player_1 = $_POST['player_1'];
             $player_2 = $_POST['player_2'];
             if(!empty($player_1) && !empty($player_2)) {
-
                 //So far, all this does is save the players' names into the database and takes the user to the gameplay page.
                 //This could have been achived with an a.href for example, but this way we make sure that the player fields are completed
-
+                
                 $query = "INSERT INTO game (player1, player2, status) VALUES ('$player_1','$player_2','')";
                 mysqli_query($con, $query);
 
