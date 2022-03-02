@@ -9,8 +9,6 @@ document.querySelector(".button-trigger").addEventListener("click", function(){
     } 
  });
 
-// let td = document.getElementsByTagName('table');
-// let player1color = "blue";
-// let player2color = "green"
+// function changePlayerName() {
 
-document.getElementById('1.1').style.background = 'green';
+// }

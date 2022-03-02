@@ -8,31 +8,71 @@ let box6 = document.getElementById('2.3')
 let box7 = document.getElementById('3.1')
 let box8 = document.getElementById('3.2')
 let box9 = document.getElementById('3.3')
+let timesEventFired = 0;
 
 // Color array to determine how will the next square be colored after a movement.
-let colors = ["magenta", "blue", "magenta", "blue", "magenta", "blue", "magenta", "blue", "magenta"];
+let colors = ["orange", "magenta", "orange", "magenta", "orange", "magenta", "orange", "magenta", "orange"];
 let i = -1;
 
-// A function to determine if victory has been achieved after every movement of a player. Need to work on 'tie'
+
+// A function to determine if victory has been achieved after every movement of a player (and checking all victory cases). 
 const isWon = () => {
-    if(box1.style.background.includes('magenta') && box2.style.background.includes('magenta') && box3.style.background.includes('magenta')) {
+    let victoryCases = [
+        // Row 1 check
+        box1.style.background.includes('orange') && box2.style.background.includes('orange') && box3.style.background.includes('orange'),
+        box1.style.background.includes('magenta') && box2.style.background.includes('magenta') && box3.style.background.includes('magenta'),
+        // Row 2 check   
+        box4.style.background.includes('orange') && box5.style.background.includes('orange') && box6.style.background.includes('orange'),
+        box4.style.background.includes('magenta') && box5.style.background.includes('magenta') && box6.style.background.includes('magenta'),
+        // Row 3 check
+        box7.style.background.includes('orange') && box8.style.background.includes('orange') && box9.style.background.includes('orange'),
+        box7.style.background.includes('magenta') && box8.style.background.includes('magenta') && box9.style.background.includes('magenta'),
+        // Column 1 check
+        box1.style.background.includes('orange') && box4.style.background.includes('orange') && box7.style.background.includes('orange'),
+        box1.style.background.includes('magenta') && box4.style.background.includes('magenta') && box7.style.background.includes('magenta'),
+        // Column 2 check
+        box2.style.background.includes('orange') && box5.style.background.includes('orange') && box8.style.background.includes('orange'),
+        box2.style.background.includes('magenta') && box5.style.background.includes('magenta') && box8.style.background.includes('magenta'),
+        // Column 3 check
+        box3.style.background.includes('orange') && box6.style.background.includes('orange') && box9.style.background.includes('orange'),
+        box3.style.background.includes('magenta') && box6.style.background.includes('magenta') && box9.style.background.includes('magenta'),
+        // Diagonal 1 check
+        box1.style.background.includes('orange') && box5.style.background.includes('orange') && box9.style.background.includes('orange'),
+        box1.style.background.includes('magenta') && box5.style.background.includes('magenta') && box9.style.background.includes('magenta'),
+        // Diagonal 2 check
+        box7.style.background.includes('orange') && box5.style.background.includes('orange') && box3.style.background.includes('orange'),
+        box7.style.background.includes('magenta') && box5.style.background.includes('magenta') && box3.style.background.includes('magenta'),
+
+    ]
+    // Someone won 
+    if (victoryCases.includes(true)) {
         console.log("You win! Cannot make any more moves")
+        document.getElementById('game_winner').innerHTML = "Game over";
         return true;
-    } else {
+    } 
+    // Nobody won, all squared colored a.k.a tie
+    else if (timesEventFired == 9) {
+        console.log("It's a tie!")
+        document.getElementById('game_winner').innerHTML = "Game over. Tie!";
+    } 
+    // Nobody won, but not all squares are colored a.k.a game not over
+    else {
         console.log("Next player, make your move")
         return false;
     }
-    // Need to work on victory cases, not to include too many if's
 }
 
 // Self-explanatory, it changes the color, and if victory is achieved, blocks all further movements.
 function changeColor() {
-    i+=1;
-    playerColorr = colors[i]
-    this.style.background=playerColorr;
+    i += 1;
+    timesEventFired += 1;
+    playerColor = colors[i]
+    this.style.background = playerColor;
     this.style.cursor = 'not-allowed';
-    if(isWon()) {i = 1000};
-    // Add a function to block further color changes if a color has been applied
+    this.removeEventListener('click', changeColor); /* This blocks changing the color of an already colored square  */
+    if (isWon()) {
+        i = 1000
+    };
 }
 box1.addEventListener('click', changeColor)
 box2.addEventListener('click', changeColor)

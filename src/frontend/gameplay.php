@@ -12,6 +12,12 @@
         include("../backend/connection.php");
         include("../backend/functions.php");
         
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            // $game_winner = $_POST['game_winner'];
+            // $game_winner = "hello";
+            // echo $game_winner;
+
+        }
         
 
 
@@ -37,7 +43,10 @@
                 </tr>
             </tbody>
         </table>
-        <input id="button-game" type="submit" value="Finish"><br><br>
+        <form method="post">
+            <input id="button-game" type="submit" value="Finish" name="game_winner">
+            <p id="game_winner" name="game_winner"></p>
+        </form>
     </main>
     <!-- Load js file at end -->
     <script src="./js/functions.js"></script>
