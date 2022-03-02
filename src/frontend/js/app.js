@@ -1,3 +1,4 @@
+
 // Some logic for tic-tac-toe game should be written in js.
 let player1 = document.querySelector('#player_1');
 let player2 = document.querySelector('#player_2');
@@ -11,3 +12,5 @@ document.querySelector(".button-trigger").addEventListener("click", function(){
 // let td = document.getElementsByTagName('table');
 // let player1color = "blue";
 // let player2color = "green"
+
+document.getElementById('1.1').style.background = 'green';
