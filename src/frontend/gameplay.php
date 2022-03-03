@@ -8,22 +8,7 @@
     <title>Gameplay - Freshbyte Intern</title>
 </head>
 <body>
-    <?php
-        include("../backend/connection.php");
-        include("../backend/functions.php");
-        
-        if($_SERVER['REQUEST_METHOD'] == "POST") {
-            // $game_winner = $_POST['game_winner'];
-            // $game_winner = "hello";
-            // echo $game_winner;
-
-        }
-        
-
-
-    ?>
     <main class="main">
-        
         <table style="width: 100px;" border="1" cellpadding="20">
             <tbody>
                 <tr>
@@ -51,5 +36,33 @@
     <!-- Load js file at end -->
     <script src="./js/functions.js"></script>
     <script src="./js/app.js"></script>
+    <?php
+        session_start();
+        include("../backend/connection.php");
+        include("../backend/functions.php");
+
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            // Using session/cookie variables for other variables
+            $player_1 = $_SESSION['var1'];
+            $player_2 = $_SESSION['var2'];
+            $cookieValue = $_COOKIE['var3'];
+            $tie = $_COOKIE['tie'];
+
+            if($tie == "Game over. Tie!"){
+                $winner = 'Egalitate';
+            } else {
+                if($cookieValue == "Orange") {
+                    $winner = $player_1;
+                } else {
+                    $winner = $player_2;
+                }
+            }
+            $query = "INSERT INTO game (player1, player2, status, winner) VALUES ('$player_1','$player_2','finished', '$winner')";
+            mysqli_query($con, $query);
+
+            header("Location: final.php");
+            die;
+        }
+    ?>
 </body>
 </html>

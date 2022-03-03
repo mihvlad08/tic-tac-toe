@@ -96,4 +96,12 @@ body {
 .main table tbody tr td:hover {
   cursor: pointer;
 }
+
+#game_winner {
+  text-align: center;
+}
+
+.game-over-info p {
+  font-size: 2rem;
+}
 /*# sourceMappingURL=style.css.map */

@@ -11,7 +11,7 @@ let box9 = document.getElementById('3.3')
 let timesEventFired = 0;
 
 // Color array to determine how will the next square be colored after a movement.
-let colors = ["orange", "magenta", "orange", "magenta", "orange", "magenta", "orange", "magenta", "orange"];
+let colors = ["Orange", "Magenta", "Orange", "Magenta", "Orange", "Magenta", "Orange", "Magenta", "Orange"];
 let i = -1;
 
 
@@ -42,26 +42,25 @@ const isWon = () => {
         // Diagonal 2 check
         box7.style.background.includes('orange') && box5.style.background.includes('orange') && box3.style.background.includes('orange'),
         box7.style.background.includes('magenta') && box5.style.background.includes('magenta') && box3.style.background.includes('magenta'),
-
     ]
+
     // Someone won 
     if (victoryCases.includes(true)) {
-        console.log("You win! Cannot make any more moves")
-        document.getElementById('game_winner').innerHTML = "Game over";
+        console.log(`${playerColor} wins the game!`)
+        document.getElementById('game_winner').innerHTML = "Game over. " + `${playerColor} wins!`;
         return true;
-    } 
+    }
     // Nobody won, all squared colored a.k.a tie
     else if (timesEventFired == 9) {
         console.log("It's a tie!")
         document.getElementById('game_winner').innerHTML = "Game over. Tie!";
-    } 
+    }
     // Nobody won, but not all squares are colored a.k.a game not over
     else {
         console.log("Next player, make your move")
         return false;
     }
 }
-
 // Self-explanatory, it changes the color, and if victory is achieved, blocks all further movements.
 function changeColor() {
     i += 1;
@@ -69,10 +68,13 @@ function changeColor() {
     playerColor = colors[i]
     this.style.background = playerColor;
     this.style.cursor = 'not-allowed';
+    document.cookie = `var3 = ${playerColor}`;
+    console.log("The new color is " + playerColor)
     this.removeEventListener('click', changeColor); /* This blocks changing the color of an already colored square  */
     if (isWon()) {
         i = 1000
     };
+    document.cookie = `tie = ${document.getElementById('game_winner').innerHTML}`;
 }
 box1.addEventListener('click', changeColor)
 box2.addEventListener('click', changeColor)
