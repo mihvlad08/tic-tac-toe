@@ -9,6 +9,9 @@ let box7 = document.getElementById('3.1')
 let box8 = document.getElementById('3.2')
 let box9 = document.getElementById('3.3')
 let timesEventFired = 0;
+let structure = [[],[],[],[],[],[],[],[],[]];
+
+document.getElementById('game_winner').style.display = 'none';
 
 // Color array to determine how will the next square be colored after a movement.
 let colors = ["Orange", "Magenta", "Orange", "Magenta", "Orange", "Magenta", "Orange", "Magenta", "Orange"];
@@ -63,18 +66,26 @@ const isWon = () => {
 }
 // Self-explanatory, it changes the color, and if victory is achieved, blocks all further movements.
 function changeColor() {
-    i += 1;
+    i+= 1; 
     timesEventFired += 1;
+    document.cookie = `timesEventFired = ${timesEventFired}`;
     playerColor = colors[i]
+
+    if(playerColor == "Orange") {
+        structure[timesEventFired-1] = 1;
+    } else {
+        structure[timesEventFired-1] = 2;
+    }
+
     this.style.background = playerColor;
     this.style.cursor = 'not-allowed';
     document.cookie = `var3 = ${playerColor}`;
-    console.log("The new color is " + playerColor)
     this.removeEventListener('click', changeColor); /* This blocks changing the color of an already colored square  */
     if (isWon()) {
         i = 1000
     };
     document.cookie = `tie = ${document.getElementById('game_winner').innerHTML}`;
+    document.cookie = `structure = ${structure}`;
 }
 box1.addEventListener('click', changeColor)
 box2.addEventListener('click', changeColor)

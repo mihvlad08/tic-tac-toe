@@ -13,7 +13,7 @@
             align-items:center
         }
         .game-over-info {
-            font-size: 2rem;
+            font-size: 1.7rem;
             color:white;
             text-align:center;
             margin-top:25%;

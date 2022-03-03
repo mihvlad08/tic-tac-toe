@@ -46,6 +46,7 @@
             $player_1 = $_SESSION['var1'];
             $player_2 = $_SESSION['var2'];
             $cookieValue = $_COOKIE['var3'];
+            $structure = $_COOKIE['structure'];
             $tie = $_COOKIE['tie'];
 
             if($tie == "Game over. Tie!"){
@@ -57,7 +58,7 @@
                     $winner = $player_2;
                 }
             }
-            $query = "INSERT INTO game (player1, player2, status, winner) VALUES ('$player_1','$player_2','finished', '$winner')";
+            $query = "INSERT INTO game (player1, player2, status, winner, structure) VALUES ('$player_1','$player_2','finished', '$winner', '$structure')";
             mysqli_query($con, $query);
 
             header("Location: final.php");
