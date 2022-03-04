@@ -43,8 +43,8 @@
 
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             // Using session/cookie variables for other variables
-            $player_1 = $_SESSION['var1'];
-            $player_2 = $_SESSION['var2'];
+            $player_1 = $_SESSION['player1'];
+            $player_2 = $_SESSION['player2'];
             $cookieValue = $_COOKIE['var3'];
             $structure = $_COOKIE['structure'];
             $tie = $_COOKIE['tie'];

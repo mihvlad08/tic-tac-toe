@@ -68,9 +68,8 @@ const isWon = () => {
 function changeColor() {
     i+= 1; 
     timesEventFired += 1;
-    document.cookie = `timesEventFired = ${timesEventFired}`;
-    playerColor = colors[i]
 
+    playerColor = colors[i]
     if(playerColor == "Orange") {
         structure[timesEventFired-1] = 1;
     } else {
@@ -79,7 +78,9 @@ function changeColor() {
 
     this.style.background = playerColor;
     this.style.cursor = 'not-allowed';
+
     document.cookie = `var3 = ${playerColor}`;
+
     this.removeEventListener('click', changeColor); /* This blocks changing the color of an already colored square  */
     if (isWon()) {
         i = 1000

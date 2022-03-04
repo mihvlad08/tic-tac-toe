@@ -8,7 +8,3 @@ document.querySelector(".button-trigger").addEventListener("click", function(){
         alert("Please enter some valid player names!");
     } 
  });
-
-// function changePlayerName() {
-
-// }

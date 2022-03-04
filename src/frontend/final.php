@@ -28,13 +28,17 @@
 
     <?php
         session_start();
-        $player_1 = $_SESSION['var1'];
-        $player_2 = $_SESSION['var2'];
+        $player_1 = $_SESSION['player1'];
+        $player_2 = $_SESSION['player2'];
         $cookieValue = $_COOKIE['var3'];
         $tie = $_COOKIE['tie'];
+
+        // Checking if tie has been achieved
         if($tie == "Game over. Tie!"){
             $winner = 'nu a castigat nimeni -> egalitate :)';
-        } else {
+        }
+        // If not, see what is the color of the last plater to make a move -> the winner 
+        else {
             if($cookieValue == "Orange") {
                 $winner = 'a castigat ' . $player_1;
             } else {

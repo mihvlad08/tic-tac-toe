@@ -19,8 +19,8 @@
             $player_2 = $_POST['player_2'];
 
             // Declaring session variables
-            $_SESSION['var1']=$player_1;
-            $_SESSION['var2']=$player_2;
+            $_SESSION['player1']=$player_1;
+            $_SESSION['player2']=$player_2;
 
             if(!empty($player_1) && !empty($player_2)) {
 
