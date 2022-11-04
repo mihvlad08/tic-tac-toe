@@ -1,0 +1,60 @@
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+body
+    background: url(../img/background.jpg) no-repeat center center/cover
+.intro
+        margin-top: 50px
+        color: white
+        text-align: center
+.player-info 
+    height: 80vh
+    // margin-top: 30px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    .text-inputs
+        display: flex
+        justify-content: center
+        .text
+            padding: 10px
+            border: 1px solid black
+            border-radius: 7.5px
+            text-align: center
+    #button
+        padding: 10px
+        margin: 0 45%
+        margin-top: 30px
+        // border-radius: 7.5px
+        &:hover
+            cursor: pointer
+.main
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    margin-top: 30px
+    #button-game
+        margin-top: 10px
+        padding: 20px
+        padding-left: 75px
+        padding-right: 75px
+    table
+        border-radius: 10px
+        background: white
+        tbody
+            background: white
+            tr
+                td
+                    background: white
+                    padding: 90px
+                    &:hover
+                        cursor: pointer
+
+#game_winner
+    text-align: center
+
+.game-over-info p
+    font-size: 2rem
